@@ -31,7 +31,7 @@ class LoginController extends BaseController
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->accessToken;
+        $success['token'] =  $user->createToken('ImagesApp')->accessToken;
         $success['name'] =  $user->name;
    
         return $this->sendResponse($success, 'User register successfully.');
@@ -47,8 +47,8 @@ class LoginController extends BaseController
         $input = $request->all();
         
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){ 
-            $user = Auth::user(); 
-            $success['token'] =  $user->createToken('MyApp')-> accessToken; 
+            $user = Auth::user($input); 
+            $success['token'] =  $user->createToken('ImagesApp')-> accessToken; 
             $success['name'] =  $user->name;
    
             return $this->sendResponse($success, 'User login successfully.');

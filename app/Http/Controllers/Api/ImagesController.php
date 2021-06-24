@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\images;
 use Illuminate\Http\Request;
 
-class ImagesController extends Controller
+class ImagesController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class ImagesController extends Controller
      */
     public function index()
     {
-        //
+        return $this->sendResponse([1,2,1], 'User register successfully.');
     }
 
     /**
