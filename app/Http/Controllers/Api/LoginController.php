@@ -33,6 +33,7 @@ class LoginController extends BaseController
         $user = User::create($input);
         $success['token'] =  $user->createToken('ImagesApp')->accessToken;
         $success['name'] =  $user->name;
+        
    
         return $this->sendResponse($success, 'User register successfully.');
     }
@@ -50,6 +51,7 @@ class LoginController extends BaseController
             $user = Auth::user($input); 
             $success['token'] =  $user->createToken('ImagesApp')-> accessToken; 
             $success['name'] =  $user->name;
+            $success['id'] =  $user->id;
    
             return $this->sendResponse($success, 'User login successfully.');
         } 

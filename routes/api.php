@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ImagelistController;
 use App\Http\Controllers\Api\ImagesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,8 @@ Route::post('login', [LoginController::class, 'login']);
      
 // Route::get('prueba',[ImagesController::class,'index']);
 Route::middleware('auth:api')->group( function () {
-    // Route::resource('images', ProductController::class);
+    Route::resource('images', ImagesController::class);
+    Route::resource('imageslist', ImagelistController::class);
     Route::get('prueba',[ImagesController::class,'index']);
 });
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
